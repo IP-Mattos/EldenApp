@@ -1,12 +1,13 @@
 import { useEffect } from 'react';
 // Redux
-import { getAllBosses } from '../../redux/slices/Bosses';
+import { getAllBosses, getBossDetail } from '../../redux/slices/Bosses';
 import { useDispatch, useSelector } from 'react-redux';
 
 function BossesList() {
 	const dispatch = useDispatch();
 	useEffect(() => {
 		dispatch(getAllBosses());
+		dispatch(getBossDetail('17f695abef9l0i1ujzrup5y0z7rw6'));
 	}, [dispatch]);
 
 	const { list: bosses } = useSelector(state => state.bosses);
