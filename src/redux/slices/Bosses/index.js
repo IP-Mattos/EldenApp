@@ -15,6 +15,7 @@ export const bossesSlices = createSlice({
 		setBossDetail: (state, action) => {
 			state.detail = action.payload;
 		},
+		
 	},
 });
 
@@ -22,10 +23,16 @@ export const { setBossesList, setBossDetail } = bossesSlices.actions;
 
 export default bossesSlices.reducer;
 
-export const getAllBosses = () => async dispatch => {
+export const getAllBosses = (name) => async dispatch => {
 	try {
 		const bosses = await axios.get('https://eldenring.fanapis.com/api/bosses');
-		dispatch(setBossesList(bosses.data.data));
+		if(name){
+			const BossesName = bosses.data.data.filter( boss => boss.name.toLowerCase().includes(name))
+			dispatch(setBossesList(BossesName));
+		}else{
+			dispatch(setBossesList(bosses.data.data));
+		}
+		
 	} catch (error) {
 		console.log(error);
 	}
