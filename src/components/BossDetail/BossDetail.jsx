@@ -8,6 +8,9 @@ import Loading from '@components/Loading/Loading';
 // url
 import { ImageStock } from '../../assets/stock';
 
+// style
+import { Detail } from '@components/styles/Cards.style.js';
+
 function BossesDetail() {
 	const { id } = useParams();
 	const dispatch = useDispatch();
@@ -17,9 +20,9 @@ function BossesDetail() {
 
 	const { detail: boss } = useSelector(state => state.bosses);
 	return (
-		<div>
+		<>
 			{boss.length !== 0 ? (
-				<div>
+				<Detail>
 					<img src={!boss.image ? ImageStock : boss.image} alt={boss.name} />
 					<h2>{boss.name}</h2>
 					<p>{boss.description}</p>
@@ -31,11 +34,11 @@ function BossesDetail() {
 					</ul>
 					<p>{boss.region}</p>
 					<p>{boss.location}</p>
-				</div>
+				</Detail>
 			) : (
 				<Loading />
 			)}
-		</div>
+		</>
 	);
 }
 
