@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 // Redux
-import { getBossDetail } from '../../redux/slices/Bosses';
+import { getBossDetail, CleanDetailBoss } from '../../redux/slices/Bosses';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 // components
@@ -14,9 +14,13 @@ import { Detail } from '@components/styles/Cards.style.js';
 function BossesDetail() {
 	const { id } = useParams();
 	const dispatch = useDispatch();
+
 	useEffect(() => {
 		dispatch(getBossDetail(id));
-	}, [dispatch]);
+		return () => {
+			dispatch(CleanDetailBoss());
+		};
+	}, []);
 
 	const { detail: boss } = useSelector(state => state.bosses);
 	return (
