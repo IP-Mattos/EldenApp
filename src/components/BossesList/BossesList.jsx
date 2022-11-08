@@ -2,10 +2,14 @@ import { useEffect } from 'react';
 // Redux
 import { getAllBosses } from '../../redux/slices/Bosses';
 import { useDispatch, useSelector } from 'react-redux';
-import {Link} from "react-router-dom";
+
+// components
+import BossesCard from '@components/BossCard/BossCard';
+import Loading from '../Loading/Loading';
 
 function BossesList() {
 	const dispatch = useDispatch();
+
 	useEffect(() => {
 		dispatch(getAllBosses());
 	}, [dispatch]);
@@ -13,17 +17,20 @@ function BossesList() {
 	const { list: bosses } = useSelector(state => state.bosses);
 	return (
 		<div>
-			{bosses.map((boss, index) => (				
-				<div key={index}>
-					<Link to={`/detail/${boss.id}`}>
-					<img src={boss.image} alt={boss.name} />
-					<h2>Name:{boss.name}</h2>
-					<h3>Region: {boss.region}</h3>
-					<p>Description: {boss.description}</p>
-					<p>Health: {boss.healthPoints}</p>
-					</Link>
+			{bosses.length !== 0 ? (
+				bosses.map((boss, index) => (
+					<BossesCard
+						key={index}
+						id={boss.id}
+						name={boss.name}
+						image={boss.image}
+					/>
+				))
+			) : (
+				<div>
+					<Loading />
 				</div>
-			))}
+			)}
 		</div>
 	);
 }

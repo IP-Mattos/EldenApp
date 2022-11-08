@@ -44,7 +44,6 @@ export const getBossDetail = id => async dispatch => {
 			'https://eldenring.fanapis.com/api/bosses/' + id
 		);
 		dispatch(setBossDetail(bosses.data.data));
-		console.log(bosses.data.data);
 	} catch (error) {
 		console.log(error);
 	}
