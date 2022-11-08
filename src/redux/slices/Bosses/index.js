@@ -15,11 +15,13 @@ export const bossesSlices = createSlice({
 		setBossDetail: (state, action) => {
 			state.detail = action.payload;
 		},
-		
+		setCleanDetailBoss: (state) => {
+			state.detail = []
+		  },
 	},
 });
 
-export const { setBossesList, setBossDetail } = bossesSlices.actions;
+export const { setBossesList, setBossDetail , setCleanDetailBoss } = bossesSlices.actions;
 
 export default bossesSlices.reducer;
 
@@ -48,3 +50,7 @@ export const getBossDetail = id => async dispatch => {
 		console.log(error);
 	}
 };
+
+export const CleanDetailBoss = () =>  dispatch =>{
+	dispatch(setCleanDetailBoss())
+} 

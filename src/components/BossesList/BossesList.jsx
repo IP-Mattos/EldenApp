@@ -7,6 +7,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import BossesCard from '@components/BossCard/BossCard';
 import Loading from '../Loading/Loading';
 
+import { Cards } from '@components/styles/Cards.style';
+
 function BossesList() {
 	const dispatch = useDispatch();
 
@@ -16,7 +18,7 @@ function BossesList() {
 
 	const { list: bosses } = useSelector(state => state.bosses);
 	return (
-		<div>
+		<Cards>
 			{bosses.length !== 0 ? (
 				bosses.map((boss, index) => (
 					<BossesCard
@@ -31,7 +33,7 @@ function BossesList() {
 					<Loading />
 				</div>
 			)}
-		</div>
+		</Cards>
 	);
 }
 

@@ -1,4 +1,3 @@
-import './App.css';
 // components
 import BossDetail from '@components/BossDetail/BossDetail';
 import HomePage from '@components/HomePage/HomePage';

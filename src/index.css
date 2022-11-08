@@ -1,11 +1,28 @@
-*{
-box-sizing: border-box;
-background-color: black;
-color: white;
+
+#root {
+	margin: 0 auto;
+	padding: 2rem;
+	text-align: center;
+}
+
+
+
+body{
+	box-sizing: border-box;
+	background-color: #191b1d;
+	color: #fff;
 }
 
 img{
 	width: 400px;
 	height: 300px;
 	object-fit: cover;
+}
+
+a{
+	text-decoration: none;
+	font-family :'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	font-size: .8rem;
+	color: #fff;
+	line-height: 40px;
 }

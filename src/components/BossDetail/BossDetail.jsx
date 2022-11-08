@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 // Redux
-import { getBossDetail } from '../../redux/slices/Bosses';
+import { getBossDetail, CleanDetailBoss } from '../../redux/slices/Bosses';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 // components
@@ -8,18 +8,25 @@ import Loading from '@components/Loading/Loading';
 // url
 import { ImageStock } from '../../assets/stock';
 
+// style
+import { Detail } from '@components/styles/Cards.style.js';
+
 function BossesDetail() {
 	const { id } = useParams();
 	const dispatch = useDispatch();
+
 	useEffect(() => {
 		dispatch(getBossDetail(id));
-	}, [dispatch]);
+		return () => {
+			dispatch(CleanDetailBoss());
+		};
+	}, []);
 
 	const { detail: boss } = useSelector(state => state.bosses);
 	return (
-		<div>
+		<>
 			{boss.length !== 0 ? (
-				<div>
+				<Detail>
 					<img src={!boss.image ? ImageStock : boss.image} alt={boss.name} />
 					<h2>{boss.name}</h2>
 					<p>{boss.description}</p>
@@ -31,11 +38,11 @@ function BossesDetail() {
 					</ul>
 					<p>{boss.region}</p>
 					<p>{boss.location}</p>
-				</div>
+				</Detail>
 			) : (
 				<Loading />
 			)}
-		</div>
+		</>
 	);
 }
 
