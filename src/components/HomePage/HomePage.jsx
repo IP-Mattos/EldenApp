@@ -1,4 +1,4 @@
-import BossesList from '@components/BossesList/BossesList';
+import { BossesList } from '@components';
 
 function HomePage() {
 	return (

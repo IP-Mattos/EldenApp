@@ -4,7 +4,7 @@ import { getBossDetail, CleanDetailBoss } from '../../redux/slices/Bosses';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 // components
-import Loading from '@components/Loading/Loading';
+import { Loading } from '@components';
 // url
 import { ImageStock } from '../../assets/stock';
 
@@ -33,8 +33,8 @@ function BossesDetail() {
 					<p>{boss.healthPoints}</p>
 					<ul>
 						<h2>Drops</h2>
-						<li>{boss.drops[1]}</li>
-						<li>{boss.drops[1]}</li>
+						<li>{boss.drops[0] ? boss.drops[0] : <p>No tiene.</p>}</li>
+						<li>{boss.drops[1] ? boss.drops[1] : <p>No tiene</p>}</li>
 					</ul>
 					<p>{boss.region}</p>
 					<p>{boss.location}</p>

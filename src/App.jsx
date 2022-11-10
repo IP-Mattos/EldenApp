@@ -1,7 +1,5 @@
 // components
-import BossDetail from '@components/BossDetail/BossDetail';
-import HomePage from '@components/HomePage/HomePage';
-import NotFound from '@components/NotFound/NotFound';
+import { BossDetail, HomePage, NotFound } from '@components';
 // router dom
 import { Route, Routes, Navigate } from 'react-router-dom';
 function App() {

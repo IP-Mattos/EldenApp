@@ -4,8 +4,7 @@ import { getAllBosses } from '../../redux/slices/Bosses';
 import { useDispatch, useSelector } from 'react-redux';
 
 // components
-import BossesCard from '@components/BossCard/BossCard';
-import Loading from '../Loading/Loading';
+import { BossCard, Loading } from '@components';
 
 import { Cards } from '@components/styles/Cards.style';
 
@@ -21,7 +20,7 @@ function BossesList() {
 		<Cards>
 			{bosses.length !== 0 ? (
 				bosses.map((boss, index) => (
-					<BossesCard
+					<BossCard
 						key={index}
 						id={boss.id}
 						name={boss.name}
