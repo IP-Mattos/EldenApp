@@ -4,7 +4,7 @@ import { getAllBosses } from '../../redux/slices/Bosses';
 import { useDispatch, useSelector } from 'react-redux';
 
 // components
-import { BossCard, Loading } from '@components';
+import { BossCard, Loading, SearchBar } from '@components';
 
 import { Cards } from '@components/styles/Cards.style';
 
@@ -18,6 +18,7 @@ function BossesList() {
 	const { list: bosses } = useSelector(state => state.bosses);
 	return (
 		<Cards>
+			<SearchBar/>
 			{bosses.length !== 0 ? (
 				bosses.map(boss => (
 					<BossCard
