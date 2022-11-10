@@ -28,16 +28,16 @@ function BossesDetail() {
 			{boss.length !== 0 ? (
 				<Detail>
 					<img src={!boss.image ? ImageStock : boss.image} alt={boss.name} />
-					<h2>{boss.name}</h2>
-					<p>{boss.description}</p>
-					<p>{boss.healthPoints}</p>
+					<h2>Nombre: {boss.name}</h2>
+					<p>Description: {boss.description}</p>
+					<p>Puntos de vida: {boss.healthPoints}</p>
 					<ul>
-						<h2>Drops</h2>
+						<h2>Drops:</h2>
 						<li>{boss.drops[0] ? boss.drops[0] : <p>No tiene.</p>}</li>
 						<li>{boss.drops[1] ? boss.drops[1] : <p>No tiene</p>}</li>
 					</ul>
-					<p>{boss.region}</p>
-					<p>{boss.location}</p>
+					<p>Region: {boss.region}</p>
+					<p>Ubicación: {boss.location}</p>
 				</Detail>
 			) : (
 				<Loading />

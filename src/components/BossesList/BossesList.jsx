@@ -19,9 +19,9 @@ function BossesList() {
 	return (
 		<Cards>
 			{bosses.length !== 0 ? (
-				bosses.map((boss, index) => (
+				bosses.map(boss => (
 					<BossCard
-						key={index}
+						key={boss.id}
 						id={boss.id}
 						name={boss.name}
 						image={boss.image}
