@@ -29,8 +29,8 @@ export const getAllBosses = (name) => async dispatch => {
 	try {
 		const bosses = await axios.get('https://eldenring.fanapis.com/api/bosses');
 		if(name){
-			const BossesName = bosses.data.data.filter( boss => boss.name.toLowerCase().includes(name))
-			dispatch(setBossesList(BossesName));
+			const BossesName = bosses.data.data.filter( boss => boss.name.toLowerCase().includes(name.toLowerCase()))
+			BossesName.length !== 0 ? dispatch(setBossesList(BossesName)) : dispatch(setBossesList([{error :"Error"}]));
 		}else{
 			dispatch(setBossesList(bosses.data.data));
 		}

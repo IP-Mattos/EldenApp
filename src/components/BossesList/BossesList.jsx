@@ -17,23 +17,29 @@ function BossesList() {
 
 	const { list: bosses } = useSelector(state => state.bosses);
 	return (
-		<Cards>
-			<SearchBar/>
-			{bosses.length !== 0 ? (
-				bosses.map(boss => (
-					<BossCard
-						key={boss.id}
-						id={boss.id}
-						name={boss.name}
-						image={boss.image}
-					/>
-				))
-			) : (
-				<div>
-					<Loading />
-				</div>
-			)}
-		</Cards>
+		<>
+			<SearchBar />
+			<Cards>
+				{bosses.length !== 0 ? (
+					bosses.map(boss =>
+						boss.error ? (
+							<div key={boss.error}>Error</div>
+						) : (
+							<BossCard
+								key={boss.id}
+								id={boss.id}
+								name={boss.name}
+								image={boss.image}
+							/>
+						)
+					)
+				) : (
+					<div>
+						<Loading />
+					</div>
+				)}
+			</Cards>
+		</>
 	);
 }
 
