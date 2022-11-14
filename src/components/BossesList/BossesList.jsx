@@ -6,23 +6,21 @@ import { useDispatch, useSelector } from 'react-redux';
 // components
 import { BossCard, Loading, Pagination } from '@components';
 
-
 import { Cards } from '@components/styles/Cards.style';
 
 function BossesList() {
 	const dispatch = useDispatch();
-	
+
 	const { list: bosses } = useSelector(state => state.bosses);
 	const [currentPage, setCurrentPage] = useState(1);
-	// eslint-disable-next-line no-unused-vars
-  	const [bossPerPage, setBossPerPage] = useState(8);
+	const bossPerPage = 8;
 	const indexOfLastBoss = currentPage * bossPerPage;
 	const indexOfFirstBoss = indexOfLastBoss - bossPerPage;
 	const currentBosses = bosses.slice(indexOfFirstBoss, indexOfLastBoss);
 
-	const pages = (pageNumber) => {
+	const pages = pageNumber => {
 		setCurrentPage(pageNumber);
-	  };
+	};
 
 	useEffect(() => {
 		dispatch(getAllBosses());
@@ -30,9 +28,7 @@ function BossesList() {
 
 	useEffect(() => {
 		setCurrentPage(1);
-	}, [bosses])
-
-	
+	}, [bosses]);
 
 	return (
 		<>
