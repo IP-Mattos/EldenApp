@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 // components
 import { BossCard, Loading, SearchBar, Pagination } from '@components';
 
+
 import { Cards } from '@components/styles/Cards.style';
 
 function BossesList() {
@@ -35,7 +36,6 @@ function BossesList() {
 
 	return (
 		<>
-			<SearchBar />
 			<Cards>
 				{currentBosses.length !== 0 ? (
 					currentBosses.map(boss =>
