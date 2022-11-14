@@ -4,7 +4,7 @@ import { getAllBosses } from '../../redux/slices/Bosses';
 import { useDispatch, useSelector } from 'react-redux';
 
 // components
-import { BossCard, Loading, SearchBar, Pagination } from '@components';
+import { BossCard, Loading, Pagination } from '@components';
 
 
 import { Cards } from '@components/styles/Cards.style';
