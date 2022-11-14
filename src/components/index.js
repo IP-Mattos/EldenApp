@@ -4,5 +4,6 @@ export * from './BossesList';
 export * from './HomePage';
 export * from './Loading';
 export * from './NotFound';
+export * from './Pagination';
 export * from './SearchBar';
 export * from './styles/Cards.style';
