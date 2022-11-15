@@ -1,11 +1,10 @@
-import { BossesList, SearchBar } from '@components';
+import { BossesList } from '@components';
 
 function HomePage() {
 	return (
 		<main>
 			<div>
 				<h1>Home</h1>
-				<SearchBar />
 				<BossesList />
 			</div>
 		</main>
