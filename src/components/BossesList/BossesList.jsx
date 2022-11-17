@@ -4,7 +4,7 @@ import { getAllBosses } from '../../redux/slices/Bosses';
 import { useDispatch, useSelector } from 'react-redux';
 
 // components
-import { BossCard, Loading, Pagination } from '@components';
+import { BossCard, Loading, Pagination, Error } from '@components';
 
 import { Cards } from '@components/styles/Cards.style';
 
@@ -34,9 +34,9 @@ function BossesList() {
 		<>
 			<Cards>
 				{currentBosses.length !== 0 ? (
-					currentBosses.map(boss =>
+					currentBosses.map((boss, index) =>
 						boss.error ? (
-							<div key={boss.error}>Error</div>
+							<Error key={index} error={'No existe jefe con ese nombre.'} />
 						) : (
 							<BossCard
 								key={boss.id}
