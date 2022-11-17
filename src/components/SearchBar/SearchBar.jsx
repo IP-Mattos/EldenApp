@@ -12,13 +12,14 @@ function SearchBar() {
 	const [name, setName] = useState('');
 	const debouncedValue = useDebounced(name, 300);
 	const navigate = useNavigate();
+
 	useEffect(() => {
 		dispatch(getAllBosses(name));
 	}, [debouncedValue]);
 
 	function handleInputChange(e) {
-		navigate('/');
 		const value = e.target.value;
+		navigate('/');
 		setName(value);
 	}
 	return (
