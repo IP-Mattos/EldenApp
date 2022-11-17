@@ -5,7 +5,7 @@ import { getAllBosses } from '../../redux/slices/Bosses';
 import { useNavigate } from 'react-router-dom';
 
 // customhook
-import { useDebounced } from '../../customs';
+import { useDebounced } from '../../hooks';
 
 function SearchBar() {
 	const dispatch = useDispatch();

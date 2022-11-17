@@ -18,11 +18,18 @@ export const bossesSlices = createSlice({
 		setCleanDetailBoss: state => {
 			state.detail = [];
 		},
+		setSortedBosses: (state, action) => {
+			state.list = action.payload;
+		},
 	},
 });
 
-export const { setBossesList, setBossDetail, setCleanDetailBoss } =
-	bossesSlices.actions;
+export const {
+	setBossesList,
+	setBossDetail,
+	setCleanDetailBoss,
+	setSortedBosses,
+} = bossesSlices.actions;
 
 export default bossesSlices.reducer;
 
@@ -57,4 +64,38 @@ export const getBossDetail = id => async dispatch => {
 
 export const CleanDetailBoss = () => dispatch => {
 	dispatch(setCleanDetailBoss());
+};
+
+export const SortBosses = value => async dispatch => {
+	try {
+		const bosses = await axios.get('https://eldenring.fanapis.com/api/bosses');
+		if (value) {
+			if (value === 'atoz') {
+				const BossesDesc = bosses.data.data.sort(function (a, b) {
+					if (a.name.toLowerCase() > b.name.toLowerCase()) {
+						return 1;
+					}
+					if (b.name.toLowerCase() > a.name.toLowerCase()) {
+						return -1;
+					}
+					return 0;
+				});
+				dispatch(setSortedBosses(BossesDesc));
+			} else {
+				const BossesAsc = bosses.data.data.sort(function (a, b) {
+					if (a.name.toLowerCase() > b.name.toLowerCase()) {
+						return -1;
+					}
+					if (b.name.toLowerCase() > a.name.toLowerCase()) {
+						return 1;
+					}
+					return 0;
+				});
+				dispatch(setSortedBosses(BossesAsc));
+			}
+		}
+		dispatch(setSortedBosses(bosses.data.data));
+	} catch (error) {
+		console.log(error);
+	}
 };

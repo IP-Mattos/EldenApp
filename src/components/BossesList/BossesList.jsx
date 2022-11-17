@@ -1,17 +1,18 @@
 import { useEffect, useState } from 'react';
 // Redux
-import { getAllBosses } from '../../redux/slices/Bosses';
-import { useDispatch, useSelector } from 'react-redux';
+// import { getAllBosses } from '../../redux/slices/Bosses';
+// import {  useDispatch, useSelector } from 'react-redux';
 
 // components
 import { BossCard, Loading, Pagination, Error } from '@components';
 
+import { useFetch } from '../../hooks';
+
 import { Cards } from '@components/styles/Cards.style';
 
 function BossesList() {
-	const dispatch = useDispatch();
-
-	const { list: bosses } = useSelector(state => state.bosses);
+	// const dispatch = useDispatch();
+	const bosses = useFetch('ztoa');
 	const [currentPage, setCurrentPage] = useState(1);
 	const bossPerPage = 8;
 	const indexOfLastBoss = currentPage * bossPerPage;
@@ -22,9 +23,11 @@ function BossesList() {
 		setCurrentPage(pageNumber);
 	};
 
-	useEffect(() => {
-		dispatch(getAllBosses());
-	}, [dispatch]);
+	
+
+	// useEffect(() => {
+	// 	dispatch(getAllBosses());
+	// }, [dispatch]);
 
 	useEffect(() => {
 		setCurrentPage(1);
